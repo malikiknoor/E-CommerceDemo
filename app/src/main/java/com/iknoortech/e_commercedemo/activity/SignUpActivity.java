@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void goToLogin(View view) {
         startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     public void finishRegister(View view) {

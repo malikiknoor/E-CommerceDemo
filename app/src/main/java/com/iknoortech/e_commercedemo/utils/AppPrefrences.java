@@ -17,7 +17,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putBoolean("isLoggedIn", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static boolean isUserSkiped(Context ctx) {
@@ -29,7 +29,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putBoolean("loginSkip", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static boolean isIntroComplete(Context ctx) {
@@ -41,7 +41,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putBoolean("intro", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getUserName(Context ctx) {
@@ -53,7 +53,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("userName", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getUserEmail(Context ctx) {
@@ -65,7 +65,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("userEmail", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getUserPhone(Context ctx) {
@@ -77,7 +77,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("userPhone", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getUserId(Context ctx) {
@@ -89,7 +89,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("userId", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getCartItemCount(Context ctx) {
@@ -101,7 +101,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("cartItem", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getPaymentDetails(Context ctx) {
@@ -113,7 +113,7 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("paymentJson", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static String getFirebaseToken(Context ctx) {
@@ -125,13 +125,13 @@ public class AppPrefrences {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.putString("FirebaseToken", value);
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 
     public static void clearAllPreferences(Context ctx) {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         mPrefsEditor = mPrefs.edit();
         mPrefsEditor.clear();
-        mPrefsEditor.commit();
+        mPrefsEditor.apply();
     }
 }

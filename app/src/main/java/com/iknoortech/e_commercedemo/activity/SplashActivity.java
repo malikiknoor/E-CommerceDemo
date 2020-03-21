@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iknoortech.e_commercedemo.R;
+import com.iknoortech.e_commercedemo.utils.AppPrefrences;
 import com.iknoortech.e_commercedemo.utils.AppUtils;
 
 import static com.iknoortech.e_commercedemo.utils.AppUtils.isInternetAvailable;
@@ -32,8 +33,13 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-                finish();
+                if(AppPrefrences.isUserLoggedOut(SplashActivity.this)){
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    finish();
+                }else{
+                    startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                    finish();
+                }
             }
         }, 1500);
 
