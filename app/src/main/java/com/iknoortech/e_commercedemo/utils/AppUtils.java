@@ -5,11 +5,15 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +26,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.iknoortech.e_commercedemo.R;
+import com.iknoortech.e_commercedemo.activity.OtpVerificationActivity;
 
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -110,5 +115,42 @@ public class AppUtils {
         if (builder != null) {
             builder.dismiss();
         }
+    }
+
+    public static void openNumberKeyboard(EditText editText, Activity activity){
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput((editText), InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    public static void openCodeSentDialog(final Activity activity, final String screen) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_code_sent);
+
+        Button btn_done = dialog.findViewById(R.id.btn_dialogDone);
+        TextView tv_heading = dialog.findViewById(R.id.textView18);
+        TextView tv_small = dialog.findViewById(R.id.textView19);
+
+        if(screen.equalsIgnoreCase("MobileVerify")){
+            tv_heading.setText(R.string.mobile_verify_popup_text1);
+            tv_small.setText(R.string.mobile_verify_popup_text2);
+        }else {
+            tv_heading.setText(R.string.forgot_password_popup_text1);
+            tv_small.setText(R.string.forgot_password_popup_text2);
+        }
+
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent intent = new Intent(activity, OtpVerificationActivity.class);
+                intent.putExtra("screenName", screen);
+                activity.startActivity(intent);
+            }
+        });
+
+        dialog.show();
     }
 }

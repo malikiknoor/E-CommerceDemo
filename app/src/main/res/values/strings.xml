@@ -15,4 +15,12 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="mobile_verify_popup_text1">Code has been sent to verify mobile number.</string>
+    <string name="mobile_verify_popup_text2">You will shortly receive a SMS with a code to verify your Mobile number</string>
+
+    <string name="forgot_password_popup_text1">Code has been sent to reset a new password.</string>
+    <string name="forgot_password_popup_text2">You will shortly receive an EMAIL with a code to setup a new password.</string>
+
+    <string name="reset_password">Please create a new password. Your new password or confirm password should be same.</string>
 </resources>

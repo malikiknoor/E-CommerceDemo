@@ -10,6 +10,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.iknoortech.e_commercedemo.R;
 import com.iknoortech.e_commercedemo.utils.AppUtils;
 
+import static com.iknoortech.e_commercedemo.utils.AppUtils.openCodeSentDialog;
+
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private TextInputEditText edt_email;
@@ -27,14 +29,14 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     public void validateForgot(View view) {
-        if(edt_email.getText().toString().isEmpty()){
+        if (edt_email.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter your registered email id", Toast.LENGTH_SHORT).show();
-        }else if(!AppUtils.isValidEmail(edt_email)){
+        } else if (!AppUtils.isValidEmail(edt_email)) {
             Toast.makeText(this, "Please enter a valid email id", Toast.LENGTH_SHORT).show();
-        }else if(!AppUtils.isInternetAvailable(this)){
+        } else if (!AppUtils.isInternetAvailable(this)) {
             Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "All Done", Toast.LENGTH_SHORT).show();
+        } else {
+            openCodeSentDialog(this, "ForgotPassword");
         }
     }
 }
