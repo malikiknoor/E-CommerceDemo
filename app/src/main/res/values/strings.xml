@@ -23,4 +23,6 @@
     <string name="forgot_password_popup_text2">You will shortly receive an EMAIL with a code to setup a new password.</string>
 
     <string name="reset_password">Please create a new password. Your new password or confirm password should be same.</string>
+
+    <string name="rupees">\u20B9</string>
 </resources>
