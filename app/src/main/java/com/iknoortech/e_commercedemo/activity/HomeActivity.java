@@ -1,4 +1,4 @@
-package com.iknoortech.e_commercedemo.activity.user;
+package com.iknoortech.e_commercedemo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.PopupMenu;
 
 import com.iknoortech.e_commercedemo.R;
-import com.iknoortech.e_commercedemo.activity.MainActivity;
 import com.iknoortech.e_commercedemo.utils.AppPrefrences;
 
 public class HomeActivity extends AppCompatActivity {

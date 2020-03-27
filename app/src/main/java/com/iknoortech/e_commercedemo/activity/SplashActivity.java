@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.iknoortech.e_commercedemo.R;
-import com.iknoortech.e_commercedemo.activity.user.HomeActivity;
 import com.iknoortech.e_commercedemo.utils.AppPrefrences;
 import com.iknoortech.e_commercedemo.utils.AppUtils;
 

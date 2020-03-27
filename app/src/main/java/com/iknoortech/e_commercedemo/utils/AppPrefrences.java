@@ -44,6 +44,18 @@ public class AppPrefrences {
         mPrefsEditor.apply();
     }
 
+    public static String getUserImage(Context ctx) {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+        return mPrefs.getString("userImage", "");
+    }
+
+    public static void setUserImage(Context ctx, String value) {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+        mPrefsEditor = mPrefs.edit();
+        mPrefsEditor.putString("userImage", value);
+        mPrefsEditor.apply();
+    }
+
     public static String getUserName(Context ctx) {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         return mPrefs.getString("userName", "");

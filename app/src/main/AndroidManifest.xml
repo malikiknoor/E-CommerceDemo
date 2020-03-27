@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false">
-        <activity android:name=".activity.user.PofileActivity"></activity>
+        <activity android:name=".activity.PofileActivity"></activity>
         <activity
-            android:name=".activity.user.HomeActivity"
+            android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ResetPasswordActivity"

@@ -18,7 +18,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.iknoortech.e_commercedemo.R;
-import com.iknoortech.e_commercedemo.activity.user.HomeActivity;
 import com.iknoortech.e_commercedemo.utils.AppConstant;
 
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserEmail;
@@ -52,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goToRegister(View view) {
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 
     public void facebookLogin(View view) {

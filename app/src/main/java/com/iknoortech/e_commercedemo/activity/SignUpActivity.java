@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.iknoortech.e_commercedemo.R;
-import com.iknoortech.e_commercedemo.activity.user.HomeActivity;
 import com.iknoortech.e_commercedemo.utils.AppConstant;
 
 import java.util.HashMap;
@@ -112,9 +111,12 @@ public class SignUpActivity extends AppCompatActivity {
         Map<String, Object> user = new HashMap<>();
         user.put("userId", fUser.getUid());
         user.put("name", edt_name.getText().toString());
+        user.put("image", "");
+        user.put("password", edt_password.getText().toString());
         user.put("email", edt_email.getText().toString());
         user.put("phone", edt_phone.getText().toString());
         user.put("token", getFirebaseToken(this));
+        user.put("registrationDate", System.currentTimeMillis());
 
         db.collection(AppConstant.USER_TABLE)
                 .document(fUser.getUid())
