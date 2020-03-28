@@ -117,7 +117,7 @@ public class AppUtils {
         }
     }
 
-    public static void openNumberKeyboard(EditText editText, Activity activity){
+    public static void openNumberKeyboard(EditText editText, Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput((editText), InputMethodManager.SHOW_IMPLICIT);
     }
@@ -133,10 +133,10 @@ public class AppUtils {
         TextView tv_heading = dialog.findViewById(R.id.textView18);
         TextView tv_small = dialog.findViewById(R.id.textView19);
 
-        if(screen.equalsIgnoreCase("MobileVerify")){
+        if (screen.equalsIgnoreCase("MobileVerify")) {
             tv_heading.setText(R.string.mobile_verify_popup_text1);
             tv_small.setText(R.string.mobile_verify_popup_text2);
-        }else {
+        } else {
             tv_heading.setText(R.string.forgot_password_popup_text1);
             tv_small.setText(R.string.forgot_password_popup_text2);
         }
@@ -145,9 +145,7 @@ public class AppUtils {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent = new Intent(activity, OtpVerificationActivity.class);
-                intent.putExtra("screenName", screen);
-                activity.startActivity(intent);
+                activity.finish();
             }
         });
 

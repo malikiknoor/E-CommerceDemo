@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -20,12 +22,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.iknoortech.e_commercedemo.R;
 import com.iknoortech.e_commercedemo.utils.AppConstant;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.iknoortech.e_commercedemo.utils.AppPrefrences.getFirebaseToken;
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserEmail;
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserId;
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserLoggedOut;
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserName;
 import static com.iknoortech.e_commercedemo.utils.AppPrefrences.setUserPhone;
 import static com.iknoortech.e_commercedemo.utils.AppUtils.closeProgressDialog;
+import static com.iknoortech.e_commercedemo.utils.AppUtils.getNewFirebaseToken;
 import static com.iknoortech.e_commercedemo.utils.AppUtils.isInternetAvailable;
 import static com.iknoortech.e_commercedemo.utils.AppUtils.isValidEmail;
 import static com.iknoortech.e_commercedemo.utils.AppUtils.showProgressDialog;
@@ -100,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void getUserDetails(FirebaseUser user) {
+    private void getUserDetails(final FirebaseUser user) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final DocumentReference docRef = db.collection(AppConstant.USER_TABLE)
                 .document(user.getUid());
@@ -116,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     setUserPhone(LoginActivity.this, document.getString("phone"));
                     setUserName(LoginActivity.this, document.getString("name"));
                     setUserId(LoginActivity.this, document.getString("userId"));
+                    setFirebaseToken(user);
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -126,6 +134,17 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setFirebaseToken(final FirebaseUser fUser) {
+        Map<String, Object> user = new HashMap<>();
+        user.put("token", getFirebaseToken(this));
+        user.put("isLogin", "Yes");
+        user.put("password", edt_password.getText().toString());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(AppConstant.USER_TABLE)
+                .document(fUser.getUid())
+                .update(user);
     }
 
     @Override

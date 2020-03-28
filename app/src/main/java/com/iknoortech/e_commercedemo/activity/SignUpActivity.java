@@ -116,6 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
         user.put("email", edt_email.getText().toString());
         user.put("phone", edt_phone.getText().toString());
         user.put("token", getFirebaseToken(this));
+        user.put("isLogin", "Yes");
         user.put("registrationDate", System.currentTimeMillis());
 
         db.collection(AppConstant.USER_TABLE)
